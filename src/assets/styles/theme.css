@@ -1,0 +1,15 @@
+:root {
+    --color-background: #EEF8E8;
+    --color-card: #FFFFFB;
+    --color-delete: #FCBF9E;
+    --color-edit: #FEE6A6;
+    --color-save: #9ED49F;
+    --color-text: #01331B;
+    --font-family: 'Arial, sans-serif';
+    --font-size-base: 16px;
+    --font-size-large: 24px;
+    --font-size-small: 12px;
+    --spacing-small: 8px;
+    --spacing-medium: 16px;
+    --spacing-large: 32px;
+}
