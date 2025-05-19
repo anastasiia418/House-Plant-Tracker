@@ -1,7 +1,9 @@
 import Modal from 'react-modal';
 import React, { useState } from 'react';
+import './style.css';
 
 const AddPlantForm = (props) => {
+    // sometimes is required to alphabetize the state variables
     const [plantName, setPlantName] = useState('');
     const [plantType, setPlantType] = useState('');
     const [watered, setWatered] = useState(false);              // boolean or string?
@@ -55,7 +57,7 @@ const AddPlantForm = (props) => {
                 <input type="date" id="fertilized" name="fertilized" required value={fertilized} onChange={(e) => setFertilized(e.target.value)} />
                 <label htmlFor="notes">Notes:</label>
                 <textarea id="notes" name="notes" rows="4" cols="50" value={notes} onChange={(e) => setNotes(e.target.value)}></textarea>
-                <button type="submit" onClick={handleSave}>Save</button>
+                <button type="submit">Save</button>
                 <button type="button" onClick={resetForm}>Cancel</button>
                 {successMessage}
             </form>
