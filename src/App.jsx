@@ -3,7 +3,7 @@ import './App.css'
 import PlantList from './components/PlantList/PlantList'
 
 function App() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
 
   return (
     <>
