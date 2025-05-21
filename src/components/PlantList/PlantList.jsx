@@ -22,6 +22,12 @@ const PlantList = () => {
     //         setPlantData(data);
     //     };
     //     fetchPlants();
+    // }, []);    
+
+    // useEffect(() => {
+    //     // Fetch plant data from local storage or API
+    //     const storedPlants = JSON.parse(localStorage.getItem('plants')) || [];
+    //     setPlantData(storedPlants);
     // }, []);
     
     const addPlantsMessage = (
