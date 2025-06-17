@@ -48,6 +48,7 @@ const AddPlantForm = (props) => {
         <Modal isOpen={props.isOpen} className='container' style={{ overlay: { position: 'fixed'}, content: { background: '#EEF8E8' } }} onRequestClose={resetForm}>
             <img src={plantImage} alt="plant" className='form-image' />
             <div className='content'>
+                <button className='close-button' onClick={resetForm}>❌</button>
                 <h1>Add a Plant</h1>
                 <form onSubmit={handleSave}>
                     <label htmlFor="plantName"> Plant Name:</label>

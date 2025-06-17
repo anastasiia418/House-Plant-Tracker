@@ -1,8 +1,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import AddPlantForm from '../AddPlantForm/AddPlant';
 
-const PlantList = () => {
-    const [addClicked, setAddClicked] = useState(false);
+function PlantList() {
+    const [openModal, setOpenModal] = useState(false);
     const [plantData, setPlantData] = useState( () => {
         const storedPlants = localStorage.getItem('plantData');
         return storedPlants ? JSON.parse(storedPlants) : [];
@@ -63,15 +63,18 @@ const PlantList = () => {
         <div>
             <h1>Plant List</h1>
             {displayContent}
-            
-            <AddPlantForm
-                isOpen={addClicked}
-                onClose={() => setAddClicked(false)}
-                onSave={handleSave}
-            />
-
-            {!addClicked && (
-                <button onClick={() => setAddClicked(true)}>Add a Plant</button>
+            <button 
+                className='add-plant-button'
+                onClick={ () => {setOpenModal(true); }}
+            >
+                Add Plant
+            </button>
+            {openModal && (
+                <AddPlantForm 
+                    isOpen={openModal}
+                    onClose={() => setOpenModal(false)}
+                    onSave={handleSave}
+                />
             )}
 
             {/* props.onSave(NewPlant);
