@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import AddPlantForm from '../AddPlantForm/AddPlant';
 
 function PlantList() {
@@ -37,13 +37,12 @@ function PlantList() {
         </div>
     );
 
-    // make this a JSX snippet, since the list is going to be displayed only once; use memo?
     const plantList = useMemo( () => (
         <ul>
             { plantData.map((plant, index) => (
                 // plantCard component here
                 // need to use a unique key for each plant
-                <li key={index}>
+                <li key={plant.id}>
                     {plant.plantName} - {plant.plantType} {plant.watered && "Watered"} {plant.fertilized && "Fertilized"}
                     <br />
                     {plant.notes}
@@ -54,7 +53,6 @@ function PlantList() {
 
     const handleSave = (newPlant) => {
         setPlantData([...plantData, newPlant]);
-        // setAddClicked(false);
     };
 
     const displayContent = plantData.length === 0 ? addPlantsMessage : plantList;
@@ -74,12 +72,9 @@ function PlantList() {
                     isOpen={openModal}
                     onClose={() => setOpenModal(false)}
                     onSave={handleSave}
+                    plantData={plantData} // for the name error check
                 />
             )}
-
-            {/* props.onSave(NewPlant);
-            resetForm();
-            props.onClose(); */}
         </div>
     );
 };
