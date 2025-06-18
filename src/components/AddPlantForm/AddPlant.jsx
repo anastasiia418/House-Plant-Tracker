@@ -85,11 +85,11 @@ const AddPlantForm = (props) => {
                     <textarea id="notes" name="notes" rows="4" cols="50" value={notes} onChange={(e) => setNotes(e.target.value)}></textarea>
                     
                     {successMessage}
+                    <div className='button-row'>
+                        <button type="submit" className='save-button'>Save</button>
+                        <button type="button" className='cancel-button' onClick={resetForm}>Cancel</button>
+                    </div>
                 </form>
-            </div>
-            <div className='button-row'>
-                <button type="submit" className='save-button'>Save</button>
-                <button type="button" className='cancel-button' onClick={resetForm}>Cancel</button>
             </div>
         </Modal>
     )
