@@ -1,5 +1,7 @@
 import { useState, useMemo, useEffect } from 'react';
 import AddPlantForm from '../AddPlantForm/AddPlant';
+import plantImage from '../../assets/images/Plant 3.png';
+import './style.css';
 
 function PlantList() {
     const [openModal, setOpenModal] = useState(false);
@@ -58,14 +60,15 @@ function PlantList() {
     const displayContent = plantData.length === 0 ? addPlantsMessage : plantList;
 
     return (
-        <div>
-            <h1>Plant List</h1>
+        <div className='plant-list-container'>
+            <h1>House Plant Inventory</h1>
+            <img src={plantImage} alt="a little plant inside a pot" />
             {displayContent}
             <button 
                 className='add-plant-button'
                 onClick={ () => {setOpenModal(true); }}
             >
-                Add Plant
+                + Add Plant
             </button>
             {openModal && (
                 <AddPlantForm 

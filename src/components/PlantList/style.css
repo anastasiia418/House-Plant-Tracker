@@ -1,0 +1,19 @@
+@import '../../assets/styles/theme.css';
+
+body {
+    background-color: var(--color-background);
+}
+img {
+    width: 50%;
+    height: auto;
+}
+.add-plant-button {
+    background-color: white;
+    color: var(--color-text);
+    border: solid 2px olive;
+    padding: 10px 20px;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+}
