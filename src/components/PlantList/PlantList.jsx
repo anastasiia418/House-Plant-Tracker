@@ -1,7 +1,8 @@
 import { useState, useMemo, useEffect } from 'react';
 import AddPlantForm from '../AddPlantForm/AddPlant';
-import plantImage from '../../assets/images/Plant 3.png';
+import plantImage from '../../assets/images/Happy.png';
 import './style.css';
+import PlantCard from '../PlantCard/PlantCard'; 
 
 function PlantList() {
     const [openModal, setOpenModal] = useState(false);
@@ -34,23 +35,18 @@ function PlantList() {
     
     const addPlantsMessage = (
         <div>
+            <img src={plantImage} alt="a little plant inside a pot" />
             <h2>No plants added yet!</h2>
             <p>Start your collection by adding your first plant below.</p>
         </div>
     );
 
     const plantList = useMemo( () => (
-        <ul>
-            { plantData.map((plant, index) => (
-                // plantCard component here
-                // need to use a unique key for each plant
-                <li key={plant.id}>
-                    {plant.plantName} - {plant.plantType} {plant.watered && "Watered"} {plant.fertilized && "Fertilized"}
-                    <br />
-                    {plant.notes}
-                </li>
-            )) }
-        </ul>
+        <div className="plant-list">
+            {plantData.map((plant) => (
+                <PlantCard key={plant.id} plantData={plant} />
+            ))}
+        </div>
     ), [plantData]);
 
     const handleSave = (newPlant) => {
@@ -62,7 +58,6 @@ function PlantList() {
     return (
         <div className='plant-list-container'>
             <h1>House Plant Inventory</h1>
-            <img src={plantImage} alt="a little plant inside a pot" />
             {displayContent}
             <button 
                 className='add-plant-button'
@@ -78,6 +73,7 @@ function PlantList() {
                     plantData={plantData} // for the name error check
                 />
             )}
+            {/* <PlantCard plantData={plantData} /> */}
         </div>
     );
 };

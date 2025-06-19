@@ -1,15 +1,24 @@
 import Modal from 'react-modal';
 import { useState } from 'react';
-import plantImage from '../../assets/images/Plant 1.png';
+import plantImage from '../../assets/images/Other 1.png';
 import './style.css';
 import { v4 as uuidv4 } from 'uuid';
+
+import succulentImg from '../../assets/images/Succulent.png';
+import cactusImg from '../../assets/images/Cactus.png';
+import fernImg from '../../assets/images/Fern.png';
+import orchidImg from '../../assets/images/Orchid.png';
+import bonsaiImg from '../../assets/images/Bonsai.png';
+import monsteraImg from '../../assets/images/Monstera.png'; // default
+import otherImg from '../../assets/images/Other 1.png';
+import other2Img from '../../assets/images/Other 2.png'; // default
 
 const AddPlantForm = (props) => {
     // sometimes is required to alphabetize the state variables
     const [plantName, setPlantName] = useState('');
     const [plantType, setPlantType] = useState('');
-    const [watered, setWatered] = useState(false);              // boolean or string?
-    const [fertilized, setFertilized] = useState(false);        // boolean or string?
+    const [watered, setWatered] = useState(false);
+    const [fertilized, setFertilized] = useState(false);
     const [notes, setNotes] = useState('');
     const [success, setSuccess] = useState(false);
     const [nameError, setNameError] = useState('');
@@ -54,6 +63,20 @@ const AddPlantForm = (props) => {
         props.onClose();
     };
 
+    const assignedPlantImage = {
+        Succulent: succulentImg,
+        Cactus: cactusImg,
+        Fern: fernImg,
+        Orchid: orchidImg,
+        Bonsai: bonsaiImg,
+        Monstera: monsteraImg,
+        Other: otherImg,
+    }
+    // const plantImage = assignedPlantImage[plantType] || otherImg; 
+    const plantImage = plantType
+        ? assignedPlantImage[plantType] || otherImg // fallback if type not found
+        : otherImg; 
+    
     return (
         <Modal isOpen={props.isOpen} className='container' style={{ overlay: { display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.5)'}, content: { background: '#EEF8E8' } }} onRequestClose={resetForm}>
             <button className='close-button' onClick={resetForm}>❌</button>
@@ -69,13 +92,15 @@ const AddPlantForm = (props) => {
                     <input type="text" id="plantName" name="plantName" required value={plantName} onChange={(e) => {setPlantName(e.target.value); setNameError('')}} />
                     {nameError && <div className="error-message">{nameError}</div>}
                     <label htmlFor="plantType"> 🪴Type:</label>
-                    <select id="plantType" name="plantType" required value={plantType} onChange={(e) => setPlantType(e.target.value)} >
+                    <select id="plantType" name="plantType" value={plantType} required onChange={(e) => setPlantType(e.target.value)} >
                         <option value="">Select a type</option>
                         <option value="Succulent">Succulent</option>
                         <option value="Cactus">Cactus</option>
+                        <option value="Monstera">Monstera</option>
                         <option value="Fern">Fern</option>
-                        <option value="Flowering">Flowering</option>
-                        <option value="Herb">Herb</option>
+                        <option value="Orchid">Orchid</option>
+                        <option value="Bonsai">Bonsai</option>
+                        <option value="Other">Other</option>
                     </select>
                     <label htmlFor="watered"> 💧 Last watered:</label>
                     <input type="date" id="watered" name="watered" required value={watered} onChange={(e) => setWatered(e.target.value)} />
