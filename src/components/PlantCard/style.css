@@ -9,7 +9,7 @@
   box-shadow: var(--box-shadow);
   padding: var(--spacing-medium);
   width: 100%;
-  max-width: 300px;
+  max-width: 200px;
 }
 h3 {
   color: var(--color-text);
