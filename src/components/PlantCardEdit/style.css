@@ -1,0 +1,6 @@
+.plant-image {
+    border-radius: var(--border-radius);
+    max-width: 200px;
+    height: 200px;
+    padding-bottom: 0.5rem;
+}

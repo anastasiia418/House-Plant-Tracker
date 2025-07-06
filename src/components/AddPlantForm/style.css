@@ -1,0 +1,151 @@
+@import '../../assets/styles/theme.css';
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.container {
+    display: grid;
+    flex-direction: row;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-background);
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    width: 500px;
+    min-width: 250px;
+}
+
+.title {
+    grid-column: span 2 / span 2;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.img-form {
+    grid-row-start: 2;
+}
+
+img.form-image {
+    /* background: #FEE6A6; */
+    border-radius: 16px;
+    width: 250px;
+    max-width: 300px;
+    /* height: 100px; */
+    object-fit: contain;
+    /* display: block; */
+    margin: 0 1rem 1.5rem auto;
+    padding: 0.5rem;
+}
+
+.content {
+    grid-row-start: 2;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+}
+
+label {
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 0.15rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+input[type='text'],
+input[type='date'],
+select,
+textarea {
+    width: 90%;
+    max-width: 250px;
+    box-sizing: border-box;
+    margin-bottom: 0.75rem;
+    resize: none;
+    border: none;
+    border-radius: 12px;
+    padding: 0.55rem 1rem;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type='text']:focus,
+input[type='date']:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--color-save);
+}
+
+.required-label {
+    font-weight: 700;
+    color: #B71C1C;
+    margin-bottom: 0.25rem;
+}
+
+.error-message {
+    background: #FFF0F0;
+    border: 2px solid #F44336;
+    color: #B71C1C;
+    border-radius: 8px;
+    padding: 0.25rem 0.75rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    text-align: left;
+}
+
+.button-row {
+    grid-column: span 2 / span 2;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.save-button {
+    background-color: var(--color-save);
+    color: var(--color-text);
+    border: none;
+    border-radius: 16px;
+    padding: 0.5rem 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.save-button:hover {
+    background-color: #7fc97f;
+}
+.cancel-button {
+    background-color: var(--color-delete);
+    color: var(--color-text);
+    border: none;
+    border-radius: 16px;
+    padding: 0.5rem 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.cancel-button:hover {
+    background-color: #f89c6b;
+}
