@@ -1,9 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
-import AddPlantForm from '../AddPlantForm/AddPlant';
 import plantImage from '../../assets/images/Happy.png';
-import PlantCard from '../PlantCard/PlantCard'; 
-// import PlantCardEdit from '../PlantCardEdit/PlantCardEdit';
-import { PlantCardEdit } from '../components';
+import { AddPlantForm, PlantCard, PlantCardEdit } from '../../components';
 import './style.css';
 
 function PlantList() {

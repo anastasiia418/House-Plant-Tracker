@@ -1,1 +1,1 @@
-export { default as AddPlantForm } from './AddPlant';
+export { default } from './AddPlantForm.jsx';

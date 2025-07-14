@@ -1,6 +1,5 @@
 import Modal from 'react-modal';
 import { useState } from 'react';
-import plantImage from '../../assets/images/Other 1.png';
 import './style.css';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -11,7 +10,6 @@ import orchidImg from '../../assets/images/Orchid.png';
 import bonsaiImg from '../../assets/images/Bonsai.png';
 import monsteraImg from '../../assets/images/Monstera.png'; // default
 import otherImg from '../../assets/images/Other 1.png';
-import other2Img from '../../assets/images/Other 2.png'; // default
 
 const AddPlantForm = (props) => {
     // sometimes is required to alphabetize the state variables
