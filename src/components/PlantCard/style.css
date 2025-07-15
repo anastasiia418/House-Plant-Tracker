@@ -1,3 +1,14 @@
+.highlight-blink {
+  animation: blink-green 0.3s alternate 0s 4;
+  border: 3px solid #176a2a;
+  box-shadow: 0 0 12px 4px #7be97b;
+}
+
+@keyframes blink-green {
+  0% { background: #eaffea; border-color: #176a2a; }
+  50% { background: #b6fcb6; border-color: #176a2a; }
+  100% { background: #eaffea; border-color: #176a2a; }
+}
 @import '../../assets/styles/theme.css';
 
 .plant-card {

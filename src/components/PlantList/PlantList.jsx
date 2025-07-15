@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import plantImage from '../../assets/images/Happy.png';
 import { AddPlantForm, PlantCard, PlantCardEdit } from '../../components';
 import './style.css';
@@ -10,6 +10,7 @@ function PlantList() {
         const storedPlants = localStorage.getItem('plantData');
         return storedPlants ? JSON.parse(storedPlants) : [];
     });
+    const [newlyAddedId, setNewlyAddedId] = useState(null);
 
     useEffect(() => {
         localStorage.setItem('plantData', JSON.stringify(plantData));
@@ -44,7 +45,8 @@ function PlantList() {
     
     const handleSave = (newPlant, updatedPlant) => {
         if (newPlant) {
-            setPlantData([...plantData, newPlant]);
+            setPlantData(prev => [...prev, newPlant]);
+            setNewlyAddedId(newPlant.id);
         }
         if (updatedPlant) {
             setPlantData(plantData.map(plant => 
@@ -83,13 +85,25 @@ function PlantList() {
                     <PlantCard
                         key={plant.id}
                         plantData={plant}
-                        // is handleEdit 
                         onEdit={() => handleEdit(plant.id)}
+                        highlight={plant.id === newlyAddedId}
                     />
                 )
             )}
         </div>
-    ), [plantData, editPlantID]);
+    ), [plantData, editPlantID, newlyAddedId]);
+
+    // Scroll to new card and remove highlight after animation
+    useEffect(() => {
+        if (newlyAddedId) {
+            const el = document.getElementById(`plant-card-${newlyAddedId}`);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // Remove highlight after 2s
+                setTimeout(() => setNewlyAddedId(null), 2000);
+            }
+        }
+    }, [newlyAddedId]);
 
 
     const displayContent = plantData.length === 0 ? addPlantsMessage : plantList;

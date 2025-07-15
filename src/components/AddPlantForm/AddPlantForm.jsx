@@ -15,23 +15,21 @@ const AddPlantForm = (props) => {
     // sometimes is required to alphabetize the state variables
     const [plantName, setPlantName] = useState('');
     const [plantType, setPlantType] = useState('');
-    const [watered, setWatered] = useState(false);
-    const [fertilized, setFertilized] = useState(false);
+    const [lastWateredDate, setlastWateredDate] = useState(false);
+    const [lastFertilizedDate, setlastFertilizedDate] = useState(false);
     const [notes, setNotes] = useState('');
     const [success, setSuccess] = useState(false);
     const [nameError, setNameError] = useState('');
 
     const successMessage = success && (
-        <div>
-            <h3>Plant added successfully!</h3>
-        </div>
+        <h3 className="success-popup">Plant added successfully!</h3>
     );
 
     const resetForm = () => {
         setPlantName('');
         setPlantType('');
-        setWatered('');
-        setFertilized('');
+        setlastWateredDate('');
+        setlastFertilizedDate('');
         setNotes('');
         setSuccess(false);
         setNameError('');
@@ -49,14 +47,15 @@ const AddPlantForm = (props) => {
             id: uuidv4(), // generate a unique ID for the plant
             plantName,
             plantType,
-            watered,
-            fertilized,
+            lastWateredDate,
+            lastFertilizedDate,
             notes,
         };
         setSuccess(true);
         setTimeout(() => {
+            setSuccess(false);
             resetForm();
-        }, 1000);
+        }, 1500);
         props.onSave(newPlant);
         props.onClose();
     };
@@ -76,45 +75,49 @@ const AddPlantForm = (props) => {
         : otherImg; 
     
     return (
-        <Modal isOpen={props.isOpen} className='container' style={{ overlay: { display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.5)'}, content: { background: '#EEF8E8' } }} onRequestClose={resetForm}>
-            <button className='close-button' onClick={resetForm}>❌</button>
-            <div className="title">
-                <h1>Add New Plant</h1>
-            </div>
-            <div className="img-form">
-                <img src={plantImage} alt="plant" className='form-image' />
-            </div>
-            <div className='content'>
-                <form onSubmit={handleSave}>
-                    <label htmlFor="plantName"> Plant Name:</label>
-                    <input type="text" id="plantName" name="plantName" required value={plantName} onChange={(e) => {setPlantName(e.target.value); setNameError('')}} />
-                    {nameError && <div className="error-message">{nameError}</div>}
-                    <label htmlFor="plantType"> 🪴Type:</label>
-                    <select id="plantType" name="plantType" value={plantType} required onChange={(e) => setPlantType(e.target.value)} >
-                        <option value="">Select a type</option>
-                        <option value="Succulent">Succulent</option>
-                        <option value="Cactus">Cactus</option>
-                        <option value="Monstera">Monstera</option>
-                        <option value="Fern">Fern</option>
-                        <option value="Orchid">Orchid</option>
-                        <option value="Bonsai">Bonsai</option>
-                        <option value="Other">Other</option>
-                    </select>
-                    <label htmlFor="watered"> 💧 Last watered:</label>
-                    <input type="date" id="watered" name="watered" required value={watered} onChange={(e) => setWatered(e.target.value)} />
-                    <label htmlFor="fertilized"> 🐝 Last fertilized:</label>
-                    <input type="date" id="fertilized" name="fertilized" required value={fertilized} onChange={(e) => setFertilized(e.target.value)} />
-                    <label htmlFor="notes"> 📝 Notes:</label>
-                    <textarea id="notes" name="notes" rows="4" cols="50" value={notes} onChange={(e) => setNotes(e.target.value)}></textarea>
-                    
-                    {successMessage}
-                    <div className='button-row'>
-                        <button type="submit" className='save-button'>Save</button>
-                        <button type="button" className='cancel-button' onClick={resetForm}>Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </Modal>
+        <> 
+            
+            {/* {successMessage} */}
+            <Modal isOpen={props.isOpen} className='container' style={{ overlay: { display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.5)'}, content: { background: '#EEF8E8' } }} onRequestClose={resetForm}>
+                <button className='close-button' onClick={resetForm}>❌</button>
+                <div className="title">
+                    <h1>Add New Plant</h1>
+                </div>
+                <div className="img-form">
+                    <img src={plantImage} alt="plant" className='form-image' />
+                </div>
+                <div className='content'>
+                    <form onSubmit={handleSave}>
+                        <label htmlFor="plantName"> Plant Name:</label>
+                        <input type="text" id="plantName" name="plantName" required value={plantName} onChange={(e) => {setPlantName(e.target.value); setNameError('')}} />
+                        {nameError && <div className="error-message">{nameError}</div>}
+                        <label htmlFor="plantType">🪴Type:</label>
+                        <select id="plantType" name="plantType" value={plantType} required onChange={(e) => setPlantType(e.target.value)} >
+                            <option value="">Select a type</option>
+                            <option value="Succulent">Succulent</option>
+                            <option value="Cactus">Cactus</option>
+                            <option value="Monstera">Monstera</option>
+                            <option value="Fern">Fern</option>
+                            <option value="Orchid">Orchid</option>
+                            <option value="Bonsai">Bonsai</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <label htmlFor="lastWateredDate">💧 Last watered:</label>
+                        <input type="date" id="lastWateredDateDate" name="lastWateredDate" required value={lastWateredDate} onChange={(e) => setlastWateredDate(e.target.value)} />
+                        <label htmlFor="lastFertilizedDate">🐝 Last fertilized:</label>
+                        <input type="date" id="lastFertilizedDate" name="lastFertilizedDate" required value={lastFertilizedDate} onChange={(e) => setlastFertilizedDate(e.target.value)} />
+                        <label htmlFor="notes">📝 Notes:</label>
+                        <textarea id="notes" name="notes" rows="4" cols="50" value={notes} onChange={(e) => setNotes(e.target.value)}></textarea>
+                        
+                        
+                        <div className='button-row'>
+                            <button type="submit" className='save-button'>Save</button>
+                            <button type="button" className='cancel-button' onClick={resetForm}>Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </Modal>
+        </>
     )
 };
 

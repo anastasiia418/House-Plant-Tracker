@@ -8,7 +8,7 @@ import bonsaiImg from '../../assets/images/Bonsai.png';
 import monsteraImg from '../../assets/images/Monstera.png';
 import otherImg from '../../assets/images/Other 1.png';
 
-function PlantCard( {plantData, onEdit} ) {
+function PlantCard( {plantData, onEdit, highlight} ) {
     const plantTypeImages = {
         Succulent: succulentImg,
         Cactus: cactusImg,
@@ -21,7 +21,10 @@ function PlantCard( {plantData, onEdit} ) {
     const image = plantTypeImages[plantData.plantType] || otherImg;
 
     return (
-        <div className="plant-card">
+        <div
+            className={`plant-card${highlight ? ' highlight-blink' : ''}`}
+            id={`plant-card-${plantData.id}`}
+        >
             <img src={image} alt={plantData.plantName} />
             <h3>{plantData.plantName}</h3>
             <p>{plantData.plantType}</p>

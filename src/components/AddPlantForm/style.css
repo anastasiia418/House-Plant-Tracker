@@ -149,3 +149,27 @@ textarea:focus {
 .cancel-button:hover {
     background-color: #f89c6b;
 }
+
+.success-popup {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #a5d6a7;
+  color: #1b5e20;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  opacity: 1;
+  z-index: 9999;
+  animation: fadeOut 1s 1s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
