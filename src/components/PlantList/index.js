@@ -1,1 +1,1 @@
-export { default as PlantList } from './PlantList';
+export { default } from './PlantList';

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './App.css'
-import PlantList from './components/PlantList/PlantList'
+import { PlantList } from '../src/components'
 // import { AddPlantForm, PlantList } from '../components'
 
 function App() {
