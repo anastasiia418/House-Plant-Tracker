@@ -86,6 +86,7 @@ function PlantList() {
                         key={plant.id}
                         plantData={plant}
                         onEdit={() => handleEdit(plant.id)}
+                        onDelete={handleDelete}
                         highlight={plant.id === newlyAddedId}
                     />
                 )

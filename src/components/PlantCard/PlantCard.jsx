@@ -8,7 +8,7 @@ import bonsaiImg from '../../assets/images/Bonsai.png';
 import monsteraImg from '../../assets/images/Monstera.png';
 import otherImg from '../../assets/images/Other 1.png';
 
-function PlantCard( {plantData, onEdit, highlight} ) {
+function PlantCard( {plantData, onEdit, onDelete, highlight} ) {
     const plantTypeImages = {
         Succulent: succulentImg,
         Cactus: cactusImg,
@@ -30,11 +30,10 @@ function PlantCard( {plantData, onEdit, highlight} ) {
             <p>{plantData.plantType}</p>
             <div className='button-row'>
                 <button 
-                className='edit-button' 
+                    className='edit-button' 
                     // onClick={onEdit}
-                    onClick={() => { console.log('Edit clicked', plantData.id); onEdit(); }}
                 >Edit</button>
-                <button className='delete-button'>Delete</button>
+                <button className='delete-button' onClick={() => onDelete(plantData.id)}>Delete</button>
             </div>
         </div>
     );
